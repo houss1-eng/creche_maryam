@@ -2,7 +2,7 @@
 # Render demandera seulement DATABASE_URL (l'URL de connexion de la base Neon).
 services:
   - type: web
-    name: lamarelle
+    name: maryam
     runtime: node
     plan: free
     buildCommand: npm install --prefix server
