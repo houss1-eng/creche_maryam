@@ -1,0 +1,29 @@
+{
+  "appId": "tn.ecole.lamarelle",
+  "appName": "Abrar",
+  "webDir": "www",
+  "android": {
+    "backgroundColor": "#1d2b5e",
+    "allowMixedContent": true,
+    "adjustMarginsForEdgeToEdge": "auto"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1200,
+      "backgroundColor": "#fffefa",
+      "showSpinner": false
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#1d2b5e",
+      "overlaysWebView": false
+    },
+    "PushNotifications": {
+      "presentationOptions": [
+        "badge",
+        "sound",
+        "alert"
+      ]
+    }
+  }
+}

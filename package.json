@@ -1,0 +1,31 @@
+{
+  "name": "lamarelle",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Jardin d'enfants Abrar – application mobile de gestion d'école privée",
+  "scripts": {
+    "db": "docker compose up -d",
+    "dev": "npm run db && node server/index.js",
+    "start": "node server/index.js",
+    "postinstall": "cd server && npm install",
+    "icons": "node scripts/icons.mjs",
+    "sync": "npx cap sync",
+    "open:android": "npx cap open android",
+    "open:ios": "npx cap sync ios && npx cap open ios",
+    "apk": "powershell -ExecutionPolicy Bypass -File build-apk.ps1"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.6.9",
+    "@capacitor/app": "^7.1.2",
+    "@capacitor/core": "^7.6.9",
+    "@capacitor/ios": "^7.6.9",
+    "@capacitor/push-notifications": "^7.0.7",
+    "@capacitor/splash-screen": "^7.0.5",
+    "@capacitor/status-bar": "^7.0.6"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^7.6.9",
+    "sharp": "^0.35.5"
+  }
+}

@@ -1,0 +1,22 @@
+# Base de données PostgreSQL du Jardin d'enfants Abrar
+#   Mot de passe : fichier .env à la racine (POSTGRES_PASSWORD=..., non versionné)
+#   Démarrer : docker compose up -d
+#   Arrêter  : docker compose down        (les données sont conservées dans le volume)
+# Port 5435 sur le PC (5432, 5433 et 5434 sont déjà utilisés par d'autres projets)
+name: lamarelle
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: lamarelle-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: lamarelle
+      POSTGRES_USER: lamarelle
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Definir POSTGRES_PASSWORD dans le fichier .env}
+    ports:
+      - "5435:5432"
+    volumes:
+      - lamarelle-data:/var/lib/postgresql/data
+
+volumes:
+  lamarelle-data:

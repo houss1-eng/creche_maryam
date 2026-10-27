@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#1d2b5e">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Abrar">
+  <title>Jardin d'enfants Abrar</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="marelle-cases.css">
+</head>
+<body>
+
+  <!-- ================= PAGE DE CONNEXION ================= -->
+  <section id="login-page" class="login-page">
+    <!-- Fond animé (fournitures et étoiles qui montent) : rempli par app.js -->
+    <div class="fond-anime" id="fond-anime" aria-hidden="true"></div>
+    <div class="login-card">
+      <!-- Logo animé : il flotte, saute et joue une petite mélodie quand on le touche — animé par app.js -->
+      <div class="logo-marelle" id="logo-marelle" role="img" aria-label="Logo Jardin d'enfants Abrar">
+        <img class="lm-texte" src="img/marelle-texte.png" alt="" draggable="false">
+      </div>
+      <h1>Jardin d'enfants <span>Abrar</span></h1>
+      <p class="slogan" id="slogan" aria-live="polite">Bienvenue au Jardin d'enfants Abrar 👋</p>
+
+      <form id="login-form" onsubmit="login(event)">
+        <label for="login-id">Numéro de téléphone <span class="muted small">(parents)</span> ou email</label>
+        <input type="text" id="login-id" required autocomplete="username" autocapitalize="off">
+
+        <label for="login-password">Mot de passe</label>
+        <input type="password" id="login-password" required autocomplete="current-password" placeholder="••••">
+        <p class="small muted">Parents : au départ, le mot de passe est votre numéro de téléphone.</p>
+
+        <p id="login-error" class="error"></p>
+        <button class="btn btn-primary btn-block" type="submit">Se connecter</button>
+      </form>
+
+      <!-- Installation sur le téléphone (bouton caché dans l'application installée) : guide en bas de l'écran -->
+      <button type="button" id="btn-installer" class="btn-installer hidden" onclick="ouvrirGuideInstall()">
+        📲 Installer l'application sur mon téléphone</button>
+
+      <!-- Contact : pages Instagram et Facebook de l'école -->
+      <div class="contact">
+        <p>Contactez-nous</p>
+        <div class="contact-liens">
+          <a class="reseau instagram" href="https://www.instagram.com/creche_jardin_denfants_maryam" target="_blank" rel="noopener"
+            aria-label="Instagram du Jardin d'enfants Abrar">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a class="reseau facebook" href="https://www.facebook.com/jardinmaryam" target="_blank" rel="noopener"
+            aria-label="Facebook du Jardin d'enfants Abrar">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+              <path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.6-1.5h1.6V4.4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.2H7.9v3h2.6V21h3z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <p class="signature signature-login">Powered by <a href="https://www.facebook.com/share/1d9yXyNn6S/" target="_blank" rel="noopener"><strong>N&amp;H</strong></a></p>
+  </section>
+
+  <!-- ================= APPLICATION ================= -->
+  <div id="app" class="app hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><img src="img/logo.png" alt=""><span>Abrar</span> <small class="kids">Jardin d'enfants</small></div>
+      <div class="role-badge" id="role-badge"></div>
+      <nav id="menu" class="menu"></nav>
+      <!-- Prochain événement et son compte à rebours (rempli par app.js) -->
+      <div id="sidebar-evenement"></div>
+      <button class="btn btn-logout" onclick="logout()">⎋ Déconnexion</button>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="burger" onclick="toggleSidebar()" aria-label="Menu">☰</button>
+        <h2 id="page-title"></h2>
+        <div class="topbar-right">
+          <button class="bell" id="bell" onclick="go('notifs')" aria-label="Notifications">
+            🔔<span id="bell-count" class="bell-count hidden"></span>
+          </button>
+          <div class="user-chip" id="user-chip"></div>
+        </div>
+      </header>
+
+      <div id="content" class="content"></div>
+      <p class="signature">Powered by <a href="https://www.facebook.com/share/1d9yXyNn6S/" target="_blank" rel="noopener"><strong>N&amp;H</strong></a></p>
+    </main>
+
+    <!-- Voile derrière le menu latéral (mobile) -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar(false)"></div>
+
+    <!-- Barre d'onglets en bas (mobile) -->
+    <nav class="tabbar" id="tabbar"></nav>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // PWA : mise en cache hors-ligne (pas nécessaire dans l'app native Capacitor)
+    if ('serviceWorker' in navigator && location.protocol.startsWith('http') && !window.Capacitor) {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>

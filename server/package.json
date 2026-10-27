@@ -1,0 +1,28 @@
+{
+  "name": "lamarelle-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "API Jardin d'enfants Abrar (Express + PostgreSQL)",
+  "type": "module",
+  "main": "index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "seed": "node seed.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1",
+    "firebase-admin": "^13.10.0",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.4.0",
+    "pdfkit": "^0.20.2",
+    "pg": "^8.23.0",
+    "web-push": "^3.6.7"
+  }
+}

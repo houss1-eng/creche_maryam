@@ -1,0 +1,14 @@
+node_modules/
+.env
+server/.env
+android/app/build/
+android/.gradle/
+ios/App/Pods/
+*.apk
+EcoleConnect-web.zip
+
+# Documents personnels (CV, presentation)
+*Presentation du projet*
+
+# Export de la base (données personnelles : noms, téléphones)
+donnees-*.json

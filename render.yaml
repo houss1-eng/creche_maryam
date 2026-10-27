@@ -1,0 +1,19 @@
+# Déploiement sur Render (https://render.com) : New → Blueprint → choisir ce dépôt GitHub
+# Render demandera seulement DATABASE_URL (l'URL de connexion de la base Neon).
+services:
+  - type: web
+    name: lamarelle
+    runtime: node
+    plan: free
+    buildCommand: npm install --prefix server
+    startCommand: node server/index.js
+    healthCheckPath: /api/sante
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: DATABASE_URL
+        sync: false            # à coller lors de la création (URL Neon)
+      - key: DATABASE_SSL
+        value: "true"
+      - key: JWT_SECRET
+        generateValue: true    # clé secrète générée automatiquement par Render

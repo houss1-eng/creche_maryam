@@ -1,0 +1,17 @@
+{
+  "name": "Jardin d'enfants Abrar",
+  "short_name": "Abrar",
+  "description": "Plateforme de gestion de l'école privée : direction, administration, professeurs, étudiants et parents.",
+  "lang": "fr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fffefa",
+  "theme_color": "#1d2b5e",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

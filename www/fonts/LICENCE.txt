@@ -1,0 +1,4 @@
+Polices de l'application (sous-ensemble « latin », fichiers woff2 de Google Fonts) :
+- Nunito  (texte)  : https://github.com/googlefonts/nunito   — SIL Open Font License 1.1
+- Baloo 2 (titres) : https://github.com/EkType/Baloo2        — SIL Open Font License 1.1
+Texte de la licence : https://openfontlicense.org
