@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Abrar</string>
-    <string name="title_activity_main">Abrar</string>
+    <string name="app_name">Maryam</string>
+    <string name="title_activity_main">Maryam</string>
     <string name="package_name">tn.ecole.lamarelle</string>
     <string name="custom_url_scheme">tn.ecole.lamarelle</string>
 </resources>

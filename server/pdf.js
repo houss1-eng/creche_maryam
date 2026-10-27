@@ -7,7 +7,7 @@ import PDFDocument from 'pdfkit';
 import { fileURLToPath } from 'node:url';
 import { existsSync } from 'node:fs';
 
-// Couleurs du Jardin d'enfants Abrar : bleu nuit + les couleurs du logo (vert, bleu ciel, rouge, jaune, orange, violet)
+// Couleurs de la Crèche et jardin d'enfants Maryam : bleu nuit + les couleurs du logo (vert, bleu ciel, rouge, jaune, orange, violet)
 const BLEU = '#2a6bb8', NUIT = '#1d2b5e', GRIS = '#4f5a70', TRAIT = '#dbe4f1', FOND = '#f4f7fd';
 const CASES = ['#7cb83a', '#22abda', '#d3181c', '#f2c230', '#f08a1c', '#8a45c0'];
 const LOGO = fileURLToPath(new URL('./logo.png', import.meta.url));
@@ -26,7 +26,7 @@ const net = t => String(t ?? '').replace(/[  ]/g, ' ');
 const aujourdhui = () => net(new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Africa/Tunis' }));
 
 function nouveauDocument(res, nomFichier, titre, layout = 'portrait') {
-  const doc = new PDFDocument({ size: 'A4', layout, margin: MARGE, bufferPages: true, info: { Title: titre, Author: "Jardin d'enfants Abrar" } });
+  const doc = new PDFDocument({ size: 'A4', layout, margin: MARGE, bufferPages: true, info: { Title: titre, Author: "Crèche et jardin d'enfants Maryam" } });
   res.setHeader('Content-Type', 'application/pdf');
   doc.registerFont('Arabe', ARABE);
   doc.registerFont('Arabe-Gras', ARABE_GRAS);
@@ -50,9 +50,9 @@ function entete(doc, titre, sousTitre) {
     doc.image(LOGO, MARGE + 1, 10, { fit: [50, 50], align: 'center', valign: 'center' });
     x = MARGE + 64;
   }
-  doc.fillColor('#ffffff').font('Helvetica-Bold').fontSize(18).text("Jardin d'enfants ", x, 18, { continued: true })
-    .fillColor('#f2c230').text('Abrar');
-  doc.font('Helvetica').fontSize(9).fillColor('#d3daf3').text("Jardin d'enfants Abrar · École préparatoire", x, 42);
+  doc.fillColor('#ffffff').font('Helvetica-Bold').fontSize(18).text("Crèche et jardin d'enfants ", x, 18, { continued: true })
+    .fillColor('#f2c230').text('Maryam');
+  doc.font('Helvetica').fontSize(9).fillColor('#d3daf3').text("Crèche et jardin d'enfants Maryam · École préparatoire", x, 42);
   doc.fontSize(9).text(`Édité le ${aujourdhui()}`, MARGE, 42, { width: l - 2 * MARGE, align: 'right' });
   police(doc.fillColor(NUIT), titre, true).fontSize(16).text(titre, MARGE, 90, { wordSpacing: espaceMots(titre) });
   if (sousTitre) doc.font('Helvetica').fontSize(10).fillColor(GRIS).text(sousTitre, MARGE, doc.y + 2);
@@ -67,7 +67,7 @@ function piedDePage(doc) {
     const bas = doc.page.height - 28;
     doc.page.margins.bottom = 0;
     doc.fontSize(8).fillColor(GRIS).font('Helvetica')
-      .text(`Jardin d'enfants Abrar · page ${i + 1} / ${pages.count}`, MARGE, bas, { width: doc.page.width - 2 * MARGE, align: 'center' });
+      .text(`Crèche et jardin d'enfants Maryam · page ${i + 1} / ${pages.count}`, MARGE, bas, { width: doc.page.width - 2 * MARGE, align: 'center' });
   }
 }
 

@@ -1,5 +1,5 @@
 /* =========================================================
-   Jardin d'enfants Abrar – Application de l'école préparatoire
+   Crèche et jardin d'enfants Maryam – Application de l'école préparatoire
    Espaces : Administration, Parents
    Les données sont stockées dans PostgreSQL, via l'API du serveur (dossier server/).
    Compatibilité : anciens iPhone (iOS 12, Safari 12) → pas de « ?? », « ?. », « ||= », globalThis… (ES2018 maximum).
@@ -250,7 +250,7 @@ document.addEventListener('touchmove', e => { if (e.touches.length > 1) e.preven
       + `--duree:${hasard(13, 24).toFixed(1)}s;--delai:-${hasard(0, 24).toFixed(1)}s;--derive:${hasard(-50, 50).toFixed(0)}px">${o.contenu}</span>`;
   }).join('');
   // Phrases d'accueil qui changent toutes les 3 secondes
-  const phrases = ['Bienvenue au Jardin d\'enfants Abrar 👋', 'Apprendre en s\'amusant 🎨', 'Suivez la journée de vos enfants 🧸',
+  const phrases = ['Bienvenue à la Crèche et jardin d\'enfants Maryam 👋', 'Apprendre en s\'amusant 🎨', 'Suivez la journée de vos enfants 🧸',
     'Chaque jour, un peu plus grand 🌱', 'Ensemble vers la réussite 🏆'];
   let n = 0;
   setInterval(() => {
@@ -576,7 +576,7 @@ const etapeInstall = (n, texte, dessin = '') => `<li class="gi-etape"><span clas
 const barreInstall = (bouton, centre = false) => `<div class="gi-barre ${centre ? 'gi-centre' : ''}" aria-hidden="true">
   ${centre ? '<i></i><i></i>' : '<i></i>'}<span class="gi-bouton">${bouton}</span>${centre ? '<i></i><i></i>' : ''}</div>`;
 const choixInstall = (texte, icone) => `<div class="gi-choix" aria-hidden="true"><strong>${texte}</strong><span>${icone}</span></div>`;
-const ICONE_APPLI = `<div class="gi-appli" aria-hidden="true"><img src="icons/icon-192.png" alt=""><strong>Abrar</strong></div>`;
+const ICONE_APPLI = `<div class="gi-appli" aria-hidden="true"><img src="icons/icon-192.png" alt=""><strong>Maryam</strong></div>`;
 
 function etapesInstall() {
   if (ongletInstall === 'iphone') return `<ol class="gi-etapes">
@@ -585,7 +585,7 @@ function etapesInstall() {
       + (versionIOS && !iosAvant(26, 0) ?' <span class="gi-ou">(iOS 26 : bouton <b>⋯</b> puis « Partager »)</span>' : ''), barreInstall(ICONE_PARTAGE, true))}
     ${etapeInstall(3, 'Faites défiler et choisissez', choixInstall('Sur l\'écran d\'accueil', '⊞'))}
     ${etapeInstall(4, 'Touchez <b>« Ajouter »</b> en haut à droite', barreInstall('Ajouter'))}
-    ${etapeInstall(5, 'Ouvrez Abrar depuis la nouvelle icône, puis activez les notifications', ICONE_APPLI)}
+    ${etapeInstall(5, 'Ouvrez Maryam depuis la nouvelle icône, puis activez les notifications', ICONE_APPLI)}
     </ol>
     <p class="gi-note">${iosAvant(16, 4)
       ? `Votre iPhone (iOS ${versionIOS.join('.')}) installe l'application, mais n'affiche pas les notifications dans la barre du téléphone
@@ -598,7 +598,7 @@ function etapesInstall() {
     ${etapeInstall(2, 'Touchez le menu en haut à droite', barreInstall('⋮'))}
     ${etapeInstall(3, 'Choisissez', choixInstall('Installer l\'application', '⤓') + '<p class="gi-ou">ou « Ajouter à l\'écran d\'accueil »</p>')}
     ${etapeInstall(4, 'Confirmez avec <b>« Installer »</b>', barreInstall('Installer'))}
-    ${etapeInstall(5, 'Ouvrez Abrar depuis la nouvelle icône, puis activez les notifications', ICONE_APPLI)}
+    ${etapeInstall(5, 'Ouvrez Maryam depuis la nouvelle icône, puis activez les notifications', ICONE_APPLI)}
     </ol>`;
 }
 function dessinerGuideInstall() {
@@ -608,7 +608,7 @@ function dessinerGuideInstall() {
   $('guide-install').querySelector('.gi-feuille').innerHTML = `
     <div class="gi-poignee"></div>
     <div class="gi-tete">
-      <div><h2 id="gi-titre">L'appli Jardin d'enfants Abrar sur votre téléphone</h2>
+      <div><h2 id="gi-titre">L'appli Crèche et jardin d'enfants Maryam sur votre téléphone</h2>
         <p class="gi-sous">Gratuite, sans App Store ni Play Store. 20 secondes.</p></div>
       <button type="button" class="gi-fermer" onclick="fermerGuideInstall()" aria-label="Fermer">✕</button>
     </div>
@@ -773,7 +773,7 @@ function testerPush() { action(api('/push/test', { method: 'POST' }), 'Notificat
 document.addEventListener('DOMContentLoaded', () => {
   const P = pluginPush();
   if (estNatif && window.PUSH_NATIF && P) {
-    P.createChannel({ id: 'lamarelle', name: 'Abrar', importance: 5, visibility: 1 }).catch(() => {});
+    P.createChannel({ id: 'lamarelle', name: 'Maryam', importance: 5, visibility: 1 }).catch(() => {});
     P.addListener('registration', ({ value }) => {
       pushCle = value;
       if (token) api('/push/abonnement', { method: 'POST', body: { type: 'fcm', jeton: value } })
@@ -800,10 +800,10 @@ function htmlCartePush() {
     default: `<p class="muted" style="margin-bottom:12px">Recevez les absences, les cours du jour, le travail à la maison, les événements…
       dans la barre de notifications du téléphone, même application fermée.</p>
       <button class="btn btn-primary btn-sm" onclick="activerPush()">🔔 Activer les notifications</button>`,
-    denied: `<p>🚫 Notifications bloquées pour Abrar. Autorisez-les dans les réglages
-      (navigateur : icône 🔒 à côté de l'adresse → Notifications → Autoriser ; iPhone : Réglages → Notifications → Abrar), puis rouvrez l'application.</p>`,
+    denied: `<p>🚫 Notifications bloquées pour Maryam. Autorisez-les dans les réglages
+      (navigateur : icône 🔒 à côté de l'adresse → Notifications → Autoriser ; iPhone : Réglages → Notifications → Maryam), puis rouvrez l'application.</p>`,
     'ios-installer': `<p>Sur iPhone, les notifications marchent quand l'application est sur l'écran d'accueil (iOS 16.4 ou plus récent) :
-      Safari → <b>Partager</b> <span class="ios-share">⬆︎</span> → <b>« Sur l'écran d'accueil »</b>, ouvrez Abrar depuis l'écran d'accueil,
+      Safari → <b>Partager</b> <span class="ios-share">⬆︎</span> → <b>« Sur l'écran d'accueil »</b>, ouvrez Maryam depuis l'écran d'accueil,
       puis revenez ici pour les activer.</p>`,
     'apk-web': `<p class="muted">Dans cette application, les notifications s'affichent avec la cloche 🔔 en haut.
       Pour les recevoir aussi dans la barre du téléphone : ouvrez <b>${esc(API_MOBILE)}</b> dans Chrome → menu ⋮ → <b>« Installer l'application »</b>,
@@ -1068,7 +1068,7 @@ function carteEditionEleve() {
 
 // ---- Comptes parents créés automatiquement : identifiants à transmettre (une seule fois) ----
 function messageIdentifiants(p) {
-  return `Bonjour, voici votre accès à l'Espace Parents de l'école (application Jardin d'enfants Abrar) :\n`
+  return `Bonjour, voici votre accès à l'Espace Parents de l'école (application Crèche et jardin d'enfants Maryam) :\n`
     + `Numéro : ${p.telephone}\nMot de passe : ${p.password} (votre numéro)\n`
     + `Vous pouvez changer le mot de passe dans « Mon profil ».\n${API_MOBILE}`;
 }

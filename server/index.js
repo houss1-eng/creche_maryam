@@ -1,5 +1,5 @@
 /* =========================================================
-   Jardin d'enfants Abrar – API (Express + PostgreSQL) – école préparatoire
+   Crèche et jardin d'enfants Maryam – API (Express + PostgreSQL) – école préparatoire
    Espaces : Administration, Parents.
    Sert aussi l'application web (dossier ../www)
    ========================================================= */
@@ -778,7 +778,7 @@ try {
   const menage = () => effacerNotificationsLues().catch(e => console.error('⚠ Ménage des notifications :', e.message));
   menage();
   setInterval(menage, 60 * 60 * 1000);
-  app.listen(PORT, '0.0.0.0', () => console.log(`✔ Jardin d'enfants Abrar API sur http://localhost:${PORT}`));
+  app.listen(PORT, '0.0.0.0', () => console.log(`✔ Crèche et jardin d'enfants Maryam API sur http://localhost:${PORT}`));
 } catch (e) {
   console.error('✖ Impossible de démarrer :', e.message);
   console.error('  → Vérifiez que la base est lancée (« docker compose up -d ») et DATABASE_URL dans server/.env');

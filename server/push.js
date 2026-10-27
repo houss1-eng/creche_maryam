@@ -49,7 +49,7 @@ export async function pousser(pour, type, texte) {
   const abonnements = await q(`SELECT a.id, a.type, a.cle, a.donnees FROM push_abonnements a JOIN users u ON u.id = a.user_id
     WHERE u.id::text = ANY($1) OR u.role = ANY($1)`, [liste]);
   if (!abonnements.length) return;
-  const titre = 'Abrar' + (TITRES[type] ? ' · ' + TITRES[type] : '');
+  const titre = 'Maryam' + (TITRES[type] ? ' · ' + TITRES[type] : '');
   const perimes = [];
   const web = abonnements.filter(a => a.type === 'web');
   await Promise.all(web.map(a => webpush.sendNotification(a.donnees, JSON.stringify({ titre, texte, type }), { TTL: 3 * 24 * 3600 })

@@ -1,5 +1,5 @@
 /* =========================================================
-   Adresse du serveur API Jardin d'enfants Abrar
+   Adresse du serveur API Crèche et jardin d'enfants Maryam
    ---------------------------------------------------------
    - Dans le navigateur (PC, iPhone, Android) l'application est servie par le serveur
      lui-même : on laisse vide, l'API est à la même adresse.

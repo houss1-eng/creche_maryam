@@ -1,4 +1,4 @@
-# Base de données PostgreSQL du Jardin d'enfants Abrar
+# Base de données PostgreSQL de la Crèche et jardin d'enfants Maryam
 #   Mot de passe : fichier .env à la racine (POSTGRES_PASSWORD=..., non versionné)
 #   Démarrer : docker compose up -d
 #   Arrêter  : docker compose down        (les données sont conservées dans le volume)

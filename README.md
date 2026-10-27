@@ -1,4 +1,4 @@
-# Jardin d'enfants Abrar – École préparatoire · Android, iOS + PostgreSQL
+# Crèche et jardin d'enfants Maryam – École préparatoire · Android, iOS + PostgreSQL
 
 Application de l'école préparatoire : **Administration** et **Espace Parents**.
 
@@ -14,7 +14,7 @@ www/              ← l'application (HTML / CSS / JS) — config.js = adresse du
 server/           ← API Express + PostgreSQL (index.js, schema.sql, seed.js, .env)
 docker-compose.yml← base PostgreSQL (port 5435)
 android/  ios/    ← projets natifs (Capacitor 7)
-build-apk.ps1     ← construit LaMarelle.apk
+build-apk.ps1     ← construit Maryam.apk
 ```
 
 Comptes de démo (mot de passe `1234`) : `admin@ecole.tn`,
@@ -40,7 +40,7 @@ npm run dev        # lance PostgreSQL (Docker) puis l'API sur http://localhost:3
 ### Autoriser les téléphones à se connecter (une seule fois)
 Dans **PowerShell en administrateur** :
 ```powershell
-New-NetFirewallRule -DisplayName "Jardin d'enfants Abrar API (port 3002)" -Direction Inbound -Protocol TCP -LocalPort 3002 -Action Allow
+New-NetFirewallRule -DisplayName "Crèche et jardin d'enfants Maryam API (port 3002)" -Direction Inbound -Protocol TCP -LocalPort 3002 -Action Allow
 ```
 
 ---
@@ -51,7 +51,7 @@ L'adresse IP du PC est dans [www/config.js](www/config.js) (`API_MOBILE`, actuel
 Si le PC change de réseau Wi-Fi, trouver la nouvelle IP avec `ipconfig`, la mettre dans `config.js`,
 puis reconstruire l'APK.
 
-- **Android** : installer `LaMarelle.apk` (le copier sur le téléphone et l'ouvrir).
+- **Android** : installer `Maryam.apk` (le copier sur le téléphone et l'ouvrir).
   Reconstruire après une modification : `npm run apk`
 - **iPhone** : ouvrir **Safari** → `http://<IP du PC>:3002` → Partager → « Sur l'écran d'accueil ».
 

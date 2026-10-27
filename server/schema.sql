@@ -1,4 +1,4 @@
--- ================= SCHÉMA POSTGRESQL – Jardin d'enfants Abrar (école préparatoire) =================
+-- ================= SCHÉMA POSTGRESQL – Crèche et jardin d'enfants Maryam (école préparatoire) =================
 -- Deux espaces : Administration, Parents.
 -- Les élèves (petits) n'ont pas de compte : leurs parents se connectent avec leur numéro de téléphone.
 
